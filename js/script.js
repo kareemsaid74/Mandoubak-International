@@ -64,24 +64,21 @@ if (socialToggle) {
         socialLinks.style.display = socialLinks.style.display === 'flex' ? 'none' : 'flex';
     });
 }
-// massage
 
-
-
-// Scroll Animation
+// Enhanced Scroll Animation
 const animateOnScroll = () => {
-    const sections = document.querySelectorAll('.section');
+    const elements = document.querySelectorAll('.animate-on-scroll, .reveal');
     const windowHeight = window.innerHeight;
     const windowTop = window.scrollY;
     const windowBottom = windowTop + windowHeight;
     
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top + windowTop;
+        const elementBottom = elementTop + element.offsetHeight;
         
-        // Check if section is in viewport
-        if (sectionBottom >= windowTop && sectionTop <= windowBottom) {
-            section.style.opacity = '1';
+        // Check if element is in viewport
+        if (elementBottom >= windowTop && elementTop <= windowBottom) {
+            element.classList.add('active');
         }
     });
 };
@@ -96,21 +93,7 @@ window.addEventListener('scroll', function() {
     header.classList.toggle('sticky', window.scrollY > 0);
 });
 
-// Initialize language switcher
-// document.addEventListener('DOMContentLoaded', () => {
-//     const savedLang = localStorage.getItem('preferredLang') || 'ar';
-//     switchLanguage(savedLang);
-    
-//     document.querySelectorAll('.lang-btn').forEach(btn => {
-//         btn.addEventListener('click', () => {
-//             const lang = btn.dataset.lang;
-//             switchLanguage(lang);
-//             localStorage.setItem('preferredLang', lang);
-//         });
-//     });
-// });
-
-// تبديل اللغة
+// Language Switcher
 document.querySelectorAll('.lang-menu a').forEach(item => {
     item.addEventListener('click', function(e) {
         e.preventDefault();
@@ -133,7 +116,7 @@ function switchLanguage(lang) {
     });
 }
 
-// كود الجافاسكريبت لتفعيل الشريط على الجوال
+// Mobile Social Sidebar
 document.addEventListener('DOMContentLoaded', function() {
     const socialSidebar = document.querySelector('.social-sidebar');
     const socialToggle = document.querySelector('.social-toggle');
@@ -155,8 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Auto-scroll for clients slider
-// Slider Navigation
+// Enhanced Client Slider
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.clients-slider');
     const prevBtn = document.querySelector('.slider-prev');
@@ -204,191 +186,194 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 3000);
     });
-    
-    // Animate items on scroll
-    const animateItems = () => {
-        const logos = document.querySelectorAll('.client-logo');
-        const windowHeight = window.innerHeight;
-        
-        logos.forEach(logo => {
-            const logoPosition = logo.getBoundingClientRect().top;
-            
-            if (logoPosition < windowHeight - 100) {
-                logo.style.opacity = '1';
-                logo.style.transform = 'translateY(0)';
-            }
-        });
-    };
-    
-    // Initial animation
-    setTimeout(() => {
-        animateItems();
-    }, 500);
-    
-    // Animate on scroll
-    window.addEventListener('scroll', animateItems);
 });
 
+// Enhanced Magnetic Buttons
+const magneticBtns = document.querySelectorAll('.cta-btn');
+magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (x - centerX) / 10;
+        const angleY = (y - centerY) / 10;
+        
+        btn.style.transform = `perspective(500px) rotateX(${angleY}deg) rotateY(${angleX}deg)`;
+        
+        const effect = btn.querySelector('.hover-effect');
+        effect.style.left = `${x}px`;
+        effect.style.top = `${y}px`;
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+    });
+});
 
+// Initialize Typed.js
+const typed = new Typed('.typed-text', {
+    strings: ['حلول أعمال متكاملة^1000', 'إستراتيجيات ناجحة^1000', 'شركاء نجاحك^1000'],
+    typeSpeed: 50,
+    backSpeed: 30,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|',
+    smartBackspace: true
+});
 
-
- // Initialize Particles.js
- document.addEventListener('DOMContentLoaded', function() {
-    particlesJS('particles-js', {
-        "particles": {
-            "number": {
-                "value": 80,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#ffffff"
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                }
-            },
-            "opacity": {
-                "value": 0.5,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 2,
-                    "size_min": 0.1,
-                    "sync": false
-                }
-            },
-            "line_linked": {
+// Initialize Particles.js
+particlesJS('particles-js', {
+    "particles": {
+        "number": {
+            "value": 80,
+            "density": {
                 "enable": true,
-                "distance": 150,
-                "color": "#ffffff",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
+                "value_area": 800
+            }
+        },
+        "color": {
+            "value": "#ffffff"
+        },
+        "shape": {
+            "type": "circle",
+            "stroke": {
+                "width": 0,
+                "color": "#000000"
+            }
+        },
+        "opacity": {
+            "value": 0.5,
+            "random": true,
+            "anim": {
                 "enable": true,
                 "speed": 1,
-                "direction": "none",
-                "random": true,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": true,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
+                "opacity_min": 0.1,
+                "sync": false
             }
         },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "grab"
-                },
-                "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                },
-                "resize": true
-            },
-            "modes": {
-                "grab": {
-                    "distance": 140,
-                    "line_linked": {
-                        "opacity": 1
-                    }
-                },
-                "push": {
-                    "particles_nb": 4
-                }
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": true,
+                "speed": 2,
+                "size_min": 0.1,
+                "sync": false
             }
         },
-        "retina_detect": true
-    });
-
-    // Initialize Typed.js
-    const typed = new Typed('.typed-text', {
-        strings: ['حلول أعمال متكاملة^1000', 'إستراتيجيات ناجحة^1000', 'شركاء نجاحك^1000'],
-        typeSpeed: 50,
-        backSpeed: 30,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|',
-        smartBackspace: true
-    });
-
-    // Magnetic Button Effect
-    const magneticBtns = document.querySelectorAll('.cta-btn');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const angleX = (x - centerX) / 10;
-            const angleY = (y - centerY) / 10;
-            
-            btn.style.transform = `perspective(500px) rotateX(${angleY}deg) rotateY(${angleX}deg)`;
-            
-            const effect = btn.querySelector('.hover-effect');
-            effect.style.left = `${x}px`;
-            effect.style.top = `${y}px`;
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = '';
-        });
-    });
-
-    // Initialize 3D Shape (Basic Three.js)
-    if (document.getElementById('3d-shape')) {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, 400 / 400, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({
-            canvas: document.getElementById('3d-shape'),
-            alpha: true,
-            antialias: true
-        });
-        renderer.setSize(400, 400);
-        
-        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-        const material = new THREE.MeshBasicMaterial({
-            color: 0x3b82f6,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.8
-        });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
-        
-        camera.position.z = 30;
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.005;
-            torusKnot.rotation.y += 0.01;
-            renderer.render(scene, camera);
+        "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+                "enable": true,
+                "rotateX": 600,
+                "rotateY": 1200
+            }
         }
-        animate();
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "grab"
+            },
+            "onclick": {
+                "enable": true,
+                "mode": "push"
+            },
+            "resize": true
+        },
+        "modes": {
+            "grab": {
+                "distance": 140,
+                "line_linked": {
+                    "opacity": 1
+                }
+            },
+            "push": {
+                "particles_nb": 4
+            }
+        }
+    },
+    "retina_detect": true
+});
+
+// Initialize Floating Shapes
+const floatingShapes = document.querySelector('.floating-shapes');
+if (floatingShapes) {
+    for (let i = 0; i < 5; i++) {
+        const shape = document.createElement('div');
+        shape.classList.add('floating-shape');
+        
+        const size = Math.random() * 200 + 100;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 10;
+        const duration = Math.random() * 10 + 10;
+        
+        shape.style.width = `${size}px`;
+        shape.style.height = `${size}px`;
+        shape.style.left = `${posX}%`;
+        shape.style.top = `${posY}%`;
+        shape.style.animationDelay = `${delay}s`;
+        shape.style.animationDuration = `${duration}s`;
+        
+        floatingShapes.appendChild(shape);
+    }
+}
+
+// Initialize 3D Shape (Basic Three.js)
+if (document.getElementById('3d-shape')) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 400 / 400, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+        canvas: document.getElementById('3d-shape'),
+        alpha: true,
+        antialias: true
+    });
+    renderer.setSize(400, 400);
+    
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({
+        color: 0x3b82f6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.8
+    });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+    
+    camera.position.z = 30;
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        torusKnot.rotation.x += 0.005;
+        torusKnot.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+    animate();
+}
+
+// Add reveal class to sections
+document.querySelectorAll('section').forEach((section, index) => {
+    if (index > 0) { // Skip hero section
+        section.classList.add('reveal', 'reveal-up');
     }
 });

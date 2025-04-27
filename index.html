@@ -19,9 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        emailjs.init('YOUR_USER_ID'); // استبدل بمعرف EmailJS الخاص بك
-    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -55,6 +53,9 @@
                         <ul class="lang-menu">
                             <li><a href="#" data-lang="ar">العربية</a></li>
                             <li><a href="#" data-lang="en">English</a></li>
+                            <li><a href="#" data-lang="hi">india</a></li>
+                            <li><a href="#" data-lang="ta">Tamil</a></li>
+
                         </ul>
                     </li>
                     <!-- <li><a href="#contact" class="btn request-btn" data-i18n="nav_request">طلب خدمة</a></li> -->
@@ -81,23 +82,24 @@
                 </h1>
                 
                 <!-- Gradient Animated Text -->
-                <p class="hero-subtitle gradient-text" data-i18n="hero_text">
-                    نقدم حلولاً متكاملة في التوظيف، الاستيراد والتصدير، السياحة العلاجية 
-                    والحلول التقنية لدعم نمو أعمالك وتبسيط عملياتك
-                </p>
-                
+               <!-- Gradient Animated Text -->
+                 <p class="hero-subtitle gradient-text" data-i18n="hero_text">
+                  نقدم حلولاً متكاملة في التوظيف، الاستيراد والتصدير، السياحة العلاجية والحلول التقنية لدعم نمو أعمالك وتبسيط عملياتك
+                 </p>
+
                 <!-- Interactive Buttons with Micro-interactions -->
-                <div class="cta-wrapper">
-                    <a href="#contact" class="cta-btn magnetic-btn">
-                        <span>ابدأ مشروعك</span>
-                        <div class="hover-effect"></div>
-                    </a>
-                    <a href="#services" class="cta-btn secondary-btn">
-                        <span>استكشف الحلول</span>
-                        <svg class="arrow-icon" viewBox="0 0 24 24">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
+                   <div class="cta-wrapper">
+                     <a href="#contact" class="cta-btn magnetic-btn">
+                      <span data-i18n="start_project">ابدأ مشروعك</span>
+                      <div class="hover-effect"></div>
+                     </a>
+                     <a href="#services" class="cta-btn secondary-btn">
+                      <span data-i18n="explore_solutions">استكشف الحلول</span>
+                     <svg class="arrow-icon" viewBox="0 0 24 24">
+                         <path d="M5 12h14M12 5l7 7-7 7"/>
+                         </svg>
+                        </a>
+                      </div>
                 </div>
             </div>
         </div>
@@ -346,7 +348,6 @@
                     <h3 data-i18n="apply_now_title">انضم إلى فريقنا</h3>
                     <p data-i18n="apply_now_text">سجل معلوماتك وسنتواصل معك قريباً لبدء رحلتك مع Mandoubak</p>
                     
-                    <!-- زر Apply Now مع أيقونة -->
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeG344PAfbZe-bp2zIZ3iMXC3Qo2pa2-6SxoZetcVTMZh8BAw/viewform?usp=dialog" 
                        target="_blank" 
                        rel="noopener noreferrer" 
@@ -411,10 +412,12 @@
                     <p><i class="fas fa-envelope"></i> <span data-i18n="email">info@Mandubak.in</span></p>
                     <div class="footer-social-links">
                         <!-- <a href="#" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a> -->
-                        <a href="https://x.com/mandubakindia" class="social-btn x-twitter" title="X (Twitter)" target="_blank" rel="noopener">
-                            <i class="fab fa-x-twitter"></i>
+                        <a href="https://x.com/mandubakindia" class="social-icon" title="X (Twitter)" target="_blank" rel="noopener">
+                            <svg class="x-icon" viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
                         </a>
-                        <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
                         <a href="https://www.instagram.com/mandubakindia" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.tiktok.com/@mandubakindia" class="social-icon tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.snapchat.com/add/mandubakindia" class="social-icon snapchat" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
@@ -438,9 +441,11 @@
     <div class="social-links">
         <!-- <a href="#" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a> -->
         <a href="https://x.com/mandubakindia" class="social-btn x-twitter" title="X (Twitter)" target="_blank" rel="noopener">
-            <i class="fab fa-x-twitter"></i>
+            <svg class="x-icon" viewBox="0 0 24 24" width="20" height="20">
+                <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
         </a>
-        <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <!-- <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
         <a href="https://www.instagram.com/mandubakindia" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://www.tiktok.com/@mandubakindia" class="social-icon tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
         <a href="https://www.snapchat.com/add/mandubakindia" class="social-icon snapchat" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
