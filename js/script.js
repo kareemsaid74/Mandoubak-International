@@ -6,6 +6,24 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     hamburger.classList.toggle('active');
 });
+// تأكد من ظهور القائمة بالكامل عند النقر
+document.querySelector('.lang-menu-trigger').addEventListener('click', function(e) {
+    e.stopPropagation();
+    const menu = this.nextElementSibling;
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    
+    // وضع القائمة إذا كانت تتجاوز الشاشة
+    const rect = menu.getBoundingClientRect();
+    if (rect.bottom > window.innerHeight) {
+        menu.style.top = 'auto';
+        menu.style.bottom = '100%';
+    }
+});
+
+// إغلاق القائمة عند النقر خارجها
+document.addEventListener('click', function() {
+    document.querySelector('.lang-menu').style.display = 'none';
+});
 
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

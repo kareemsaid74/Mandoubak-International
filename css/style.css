@@ -248,20 +248,30 @@ header {
         width: 100%;
     }
     
-    .lang-menu-container {
-        width: 100%;
-    }
-    
+    /* للشاشات الصغيرة */
+@media (max-width: 768px) {
     .lang-menu {
-        position: static;
-        box-shadow: none;
-        display: none;
-        width: 100%;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 150px; /* عرض كافٍ */
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000; /* تأكد من أنها فوق كل العناصر */
+        max-height: 300px; /* ارتفاع كافٍ */
+        overflow-y: auto; /* إضافة scroll إذا لزم الأمر */
     }
     
-    .lang-menu-container:hover .lang-menu {
-        display: block;
+    .lang-menu li {
+        padding: 5px 10px;
+        white-space: nowrap; /* منع التفاف النص */
     }
+    
+    .lang-menu a {
+        font-size: 14px; /* حجم خط مناسب */
+    }
+}
 }
 
 /* Hero Section */
